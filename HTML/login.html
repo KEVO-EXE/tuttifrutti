@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Tutti Frutti</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+
+<body class="bg-slate-950 text-white min-h-screen
+             flex justify-center items-center p-6">
+
+
+    <div class="bg-slate-900 p-8 rounded-3xl
+                shadow-2xl w-full max-w-md
+                border border-purple-700">
+
+
+        <h1 class="text-3xl font-bold text-center
+                   text-purple-400 mb-3">
+
+            🍇 Iniciar sesión
+
+        </h1>
+
+
+        <p class="text-gray-400 text-center mb-8">
+
+            Bienvenido nuevamente a Tutti Frutti.
+
+        </p>
+
+
+
+        <!-- FORMULARIO LOGIN -->
+
+        <form id="formLogin" class="space-y-4">
+
+
+            <input
+                type="text"
+                id="login_nombre_usuario"
+                placeholder="Nombre de usuario"
+                required
+                class="w-full p-3 rounded-xl bg-slate-800
+                       border border-gray-700">
+
+
+            <input
+                type="password"
+                id="login_contrasena"
+                placeholder="Contraseña"
+                required
+                class="w-full p-3 rounded-xl bg-slate-800
+                       border border-gray-700">
+
+
+            <button
+                type="submit"
+                class="w-full bg-purple-600 p-3
+                       rounded-xl font-bold
+                       hover:bg-purple-500 transition">
+
+                Iniciar sesión
+
+            </button>
+
+
+            <!-- Mensajes de PHP mostrados por JavaScript -->
+
+            <p id="mensajeLogin"
+               role="status"
+               aria-live="polite"
+               class="text-center text-sm">
+            </p>
+
+        </form>
+
+
+
+        <p class="text-center text-gray-400 mt-6">
+
+            ¿Todavía no tenés cuenta?
+
+            <a href="registro.html"
+               class="text-purple-400 hover:underline">
+
+                Registrarse
+
+            </a>
+
+        </p>
+
+
+        <a href="index.html"
+           class="block text-center text-gray-500 mt-4">
+
+            ← Volver al inicio
+
+        </a>
+
+
+    </div>
+
+
+
+    <!-- RUTA CORREGIDA -->
+
+    <script src="../JS/auth.js"></script>
+
+
+</body>
+</html>

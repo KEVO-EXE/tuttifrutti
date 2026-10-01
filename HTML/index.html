@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Tutti Frutti | Aprende idiomas jugando</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+
+<body class="bg-slate-950 text-white min-h-screen">
+
+
+    <!-- ============================================== -->
+    <!-- VIDEO DE FONDO -->
+    <!-- ============================================== -->
+
+    <video
+        autoplay
+        muted
+        loop
+        playsinline
+        class="fixed inset-0 w-full h-full object-cover -z-20">
+
+        <!-- Ruta corregida -->
+        <source src="../Video/fondo.mp4" type="video/mp4">
+
+    </video>
+
+
+    <!-- CAPA OSCURA -->
+
+    <div class="fixed inset-0 bg-slate-950/70 -z-10"></div>
+
+
+
+    <!-- ============================================== -->
+    <!-- BARRA DE NAVEGACIÓN -->
+    <!-- ============================================== -->
+
+    <nav class="flex justify-between items-center
+                px-6 md:px-16 py-6">
+
+        <div class="text-2xl font-black text-purple-400">
+
+            🍇 Tutti Frutti
+
+        </div>
+
+
+        <!-- BOTONES PARA VISITANTES -->
+
+        <div id="botonesAcceso" class="flex gap-3">
+
+            <a href="login.html"
+               class="px-4 py-2 border border-purple-500
+                      rounded-xl hover:bg-purple-500 transition">
+
+                Iniciar sesión
+
+            </a>
+
+
+            <a href="registro.html"
+               class="px-4 py-2 bg-purple-600
+                      rounded-xl hover:bg-purple-500 transition">
+
+                Registrarse
+
+            </a>
+
+        </div>
+
+
+        <!-- OPCIONES PARA USUARIOS CONECTADOS -->
+
+        <div id="panelUsuario"
+             class="hidden flex items-center gap-4">
+
+            <span id="nombreJugador"
+                  class="text-purple-300 font-semibold">
+            </span>
+
+
+            <a href="../PHP/logout.php"
+               class="px-4 py-2 bg-red-600
+                      rounded-xl hover:bg-red-500 transition">
+
+                Cerrar sesión
+
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- ============================================== -->
+    <!-- PRESENTACIÓN PRINCIPAL -->
+    <!-- ============================================== -->
+
+    <main>
+
+        <section class="min-h-[70vh] flex flex-col
+                        justify-center items-center
+                        text-center px-6">
+
+
+            <div class="mb-6 px-4 py-2 rounded-full
+                        bg-purple-500/10 border border-purple-500/30
+                        text-purple-300">
+
+                🎮 Aprende • Juega • Compite
+
+            </div>
+
+
+            <h1 class="text-5xl md:text-7xl font-black max-w-5xl">
+
+                Aprende idiomas
+
+                <span class="block text-transparent bg-clip-text
+                             bg-gradient-to-r from-purple-400
+                             to-fuchsia-500">
+
+                    jugando Tutti Frutti
+
+                </span>
+
+            </h1>
+
+
+            <p class="mt-6 text-lg text-gray-300 max-w-2xl">
+
+                Poné a prueba tu vocabulario, descubrí nuevas
+                palabras y aprendé inglés mientras competís
+                con otros jugadores.
+
+            </p>
+
+
+            <div class="mt-10 flex gap-4">
+
+
+                <a id="botonComenzar"
+                   href="registro.html"
+                   class="px-8 py-4 bg-purple-600 rounded-xl
+                          font-bold hover:bg-purple-500 transition">
+
+                    🚀 Comenzar a jugar
+
+                </a>
+
+
+                <a href="#modos"
+                   class="px-8 py-4 border border-gray-700
+                          rounded-xl hover:border-purple-500
+                          transition">
+
+                    Ver modos
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================== -->
+        <!-- MODOS DE JUEGO -->
+        <!-- ========================================== -->
+
+        <section id="modos" class="px-6 md:px-16 py-20">
+
+
+            <h2 class="text-4xl font-bold text-center mb-12">
+
+                Elegí tu forma de jugar
+
+            </h2>
+
+
+            <div class="grid md:grid-cols-2 gap-8
+                        max-w-5xl mx-auto">
+
+
+                <!-- MODO CASUAL -->
+
+                <div class="bg-slate-900/90 border border-purple-900
+                            rounded-3xl p-8 hover:border-purple-500
+                            transition">
+
+                    <div class="text-6xl mb-6">🎮</div>
+
+                    <h3 class="text-3xl font-bold text-purple-400">
+
+                        Modo Casual
+
+                    </h3>
+
+
+                    <p class="text-gray-400 mt-4">
+
+                        Jugá a tu ritmo mientras aprendés nuevas
+                        palabras en inglés.
+
+                    </p>
+
+
+                    <ul class="mt-6 space-y-3 text-gray-300">
+
+                        <li>✓ Practicá vocabulario</li>
+                        <li>✓ Sin presión de ranking</li>
+                        <li>✓ Ideal para aprender</li>
+
+                    </ul>
+
+
+                    <button
+                        
+                        id="btnModoCasual"
+                        class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-xl transition"
+                    >
+                        🎮 Modo Casual
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- MODO COMPETITIVO -->
+
+                <div class="bg-slate-900/90 border border-fuchsia-800
+                            rounded-3xl p-8 hover:border-fuchsia-400
+                            transition">
+
+                    <div class="text-6xl mb-6">🏆</div>
+
+                    <h3 class="text-3xl font-bold text-fuchsia-400">
+
+                        Modo Competitivo
+
+                    </h3>
+
+
+                    <p class="text-gray-400 mt-4">
+
+                        Competí en rondas contra otros jugadores
+                        y conseguí el mejor puntaje.
+
+                    </p>
+
+
+                    <ul class="mt-6 space-y-3 text-gray-300">
+
+                        <li>✓ Partidas por rondas</li>
+                        <li>✓ Sistema de puntajes</li>
+                        <li>✓ Ranking de jugadores</li>
+
+                    </ul>
+
+
+                    <button
+                        type="button"
+                        disabled
+                        class="mt-8 w-full bg-fuchsia-600/20
+                               text-fuchsia-300 py-3 rounded-xl">
+
+                        Próximamente
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ============================================== -->
+    <!-- PIE DE PÁGINA -->
+    <!-- ============================================== -->
+
+    <footer class="text-center text-gray-500 py-10">
+
+        Tutti Frutti • Aprende idiomas jugando 🍇
+
+    </footer>
+
+
+
+    <!-- JAVASCRIPT: RUTA CORREGIDA -->
+
+    <script src="../JS/main.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tutti Frutti - Modo Casual</title>
+
+    <!-- Tailwind CSS desde CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-purple-900 via-purple-700 to-fuchsia-600 text-white">
+
+
+    <!-- ===================================================== -->
+    <!-- CONTENEDOR PRINCIPAL -->
+    <!-- ===================================================== -->
+
+    <main class="min-h-screen flex items-center justify-center px-4 py-8">
+
+        <section class="w-full max-w-5xl bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl p-6 md:p-10">
+
+
+            <!-- ================================================= -->
+            <!-- CABECERA -->
+            <!-- ================================================= -->
+
+            <header class="text-center mb-8">
+
+                <h1 class="text-4xl md:text-5xl font-bold mb-2">
+                    🍓 Tutti Frutti
+                </h1>
+
+                <p class="text-purple-100 text-lg">
+                    Modo Casual
+                </p>
+
+            </header>
+
+
+            <!-- ================================================= -->
+            <!-- INFORMACIÓN DE LA RONDA -->
+            <!-- ================================================= -->
+
+            <section class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+
+
+                <!-- LETRA -->
+
+                <div class="bg-white/15 rounded-2xl p-5 text-center">
+
+                    <p class="text-sm uppercase tracking-wider text-purple-200">
+                        Letra
+                    </p>
+
+                    <h2 id="letraActual" class="text-6xl font-bold mt-2">
+                        -
+                    </h2>
+
+                </div>
+
+
+                <!-- RONDA -->
+
+                <div class="bg-white/15 rounded-2xl p-5 text-center">
+
+                    <p class="text-sm uppercase tracking-wider text-purple-200">
+                        Ronda
+                    </p>
+
+                    <h2 id="numeroRonda" class="text-4xl font-bold mt-3">
+                        1
+                    </h2>
+
+                </div>
+
+
+                <!-- TIEMPO -->
+
+                <div class="bg-white/15 rounded-2xl p-5 text-center">
+
+                    <p class="text-sm uppercase tracking-wider text-purple-200">
+                        Tiempo
+                    </p>
+
+                    <h2 id="temporizador" class="text-4xl font-bold mt-3">
+                        01:30
+                    </h2>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================================================= -->
+            <!-- BOTÓN INICIAR -->
+            <!-- ================================================= -->
+
+            <section class="text-center mb-8">
+
+                <button
+                    id="btnIniciar"
+                    class="bg-green-500 hover:bg-green-600 transition duration-300 px-8 py-3 rounded-xl font-bold text-lg shadow-lg">
+
+                    ▶ Iniciar ronda
+
+                </button>
+
+            </section>
+
+
+            <!-- ================================================= -->
+            <!-- FORMULARIO DEL JUEGO -->
+            <!-- ================================================= -->
+
+            <form id="formJuego" class="space-y-5">
+
+
+                <!-- NOMBRE -->
+
+                <div>
+
+                    <label for="nombre" class="block mb-2 font-semibold">
+                        Nombre
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                        autocomplete="off"
+                        disabled
+                        class="w-full px-4 py-3 rounded-xl bg-white text-gray-800 outline-none focus:ring-4 focus:ring-purple-300 disabled:bg-gray-300">
+
+                </div>
+
+
+                <!-- APELLIDO -->
+
+                <div>
+
+                    <label for="apellido" class="block mb-2 font-semibold">
+                        Apellido
+                    </label>
+
+                    <input
+                        type="text"
+                        id="apellido"
+                        name="apellido"
+                        autocomplete="off"
+                        disabled
+                        class="w-full px-4 py-3 rounded-xl bg-white text-gray-800 outline-none focus:ring-4 focus:ring-purple-300 disabled:bg-gray-300">
+
+                </div>
+
+
+                <!-- OBJETO -->
+
+                <div>
+
+                    <label for="objeto" class="block mb-2 font-semibold">
+                        Objeto
+                    </label>
+
+                    <input
+                        type="text"
+                        id="objeto"
+                        name="objeto"
+                        autocomplete="off"
+                        disabled
+                        class="w-full px-4 py-3 rounded-xl bg-white text-gray-800 outline-none focus:ring-4 focus:ring-purple-300 disabled:bg-gray-300">
+
+                </div>
+
+
+                <!-- COLOR -->
+
+                <div>
+
+                    <label for="color" class="block mb-2 font-semibold">
+                        Color
+                    </label>
+
+                    <input
+                        type="text"
+                        id="color"
+                        name="color"
+                        autocomplete="off"
+                        disabled
+                        class="w-full px-4 py-3 rounded-xl bg-white text-gray-800 outline-none focus:ring-4 focus:ring-purple-300 disabled:bg-gray-300">
+
+                </div>
+
+
+                <!-- CIUDAD -->
+
+                <div>
+
+                    <label for="ciudad" class="block mb-2 font-semibold">
+                        Ciudad
+                    </label>
+
+                    <input
+                        type="text"
+                        id="ciudad"
+                        name="ciudad"
+                        autocomplete="off"
+                        disabled
+                        class="w-full px-4 py-3 rounded-xl bg-white text-gray-800 outline-none focus:ring-4 focus:ring-purple-300 disabled:bg-gray-300">
+
+                </div>
+
+
+                <!-- PAÍS -->
+
+                <div>
+
+                    <label for="pais" class="block mb-2 font-semibold">
+                        País
+                    </label>
+
+                    <input
+                        type="text"
+                        id="pais"
+                        name="pais"
+                        autocomplete="off"
+                        disabled
+                        class="w-full px-4 py-3 rounded-xl bg-white text-gray-800 outline-none focus:ring-4 focus:ring-purple-300 disabled:bg-gray-300">
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- BOTÓN TERMINAR RONDA -->
+                <!-- ================================================= -->
+
+                <div class="pt-5 text-center">
+
+                    <button
+                        type="button"
+                        id="btnTerminar"
+                        disabled
+                        class="bg-red-500 hover:bg-red-600 transition duration-300 px-8 py-4 rounded-xl font-bold text-xl shadow-lg disabled:bg-gray-500 disabled:cursor-not-allowed">
+
+                        🍓 ¡Tutti Frutti!
+
+                    </button>
+
+                </div>
+
+            </form>
+
+
+            <!-- ================================================= -->
+            <!-- MENSAJE DE ESTADO -->
+            <!-- ================================================= -->
+
+            <section class="mt-8 text-center">
+
+                <p id="mensajeEstado" class="text-purple-100">
+                    Presioná "Iniciar ronda" para comenzar.
+                </p>
+
+            </section>
+
+
+            <!-- ================================================= -->
+            <!-- RESULTADO DE LA RONDA -->
+            <!-- ================================================= -->
+
+            <section
+                id="resultadoRonda"
+                class="hidden mt-8 bg-white/15 rounded-2xl p-6">
+
+                <h2 class="text-2xl font-bold mb-4 text-center">
+                    Resultado de la ronda
+                </h2>
+
+                <div class="flex justify-between items-center border-b border-white/20 py-3">
+
+                    <span>Puntaje obtenido</span>
+
+                    <strong id="puntajeRonda" class="text-2xl">
+                        0
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================================================= -->
+            <!-- BOTÓN VOLVER -->
+            <!-- ================================================= -->
+
+            <footer class="text-center mt-10">
+
+                <a
+                    href="index.html"
+                    class="inline-block text-purple-200 hover:text-white transition">
+
+                    ← Volver al inicio
+
+                </a>
+
+            </footer>
+
+        </section>
+
+    </main>
+
+
+    <!-- ========================================================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ========================================================= -->
+
+     <script src="/JS/casual.js"></script>
+
+</body>
+
+</html>
