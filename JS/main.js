@@ -1,4 +1,3 @@
-
 // ======================================================
 // PROYECTO: TUTTI FRUTTI
 // ARCHIVO: JS/main.js
@@ -10,8 +9,7 @@
 // 1. CONFIGURACIÓN
 // ======================================================
 
-// Ruta corregida desde HTML/ hacia PHP/.
-
+// Ruta hacia PHP.
 const URL_SESION = "../PHP/verificar_sesion.php";
 
 
@@ -23,23 +21,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
     verificarSesion();
 
+
+    // ==================================================
+    // BOTÓN MODO CASUAL
+    // ==================================================
+
+    const btnModoCasual =
+        document.getElementById("btnModoCasual");
+
+
+    if (btnModoCasual) {
+
+        btnModoCasual.addEventListener(
+            "click",
+            function () {
+
+                // Subimos desde JS/ y entramos a HTML/.
+                window.location.href = "/tuttifrutti/HTML/juego-casual.html";
+
+            }
+        );
+    }
+
 });
 
-// ======================================================
-// BOTÓN MODO CASUAL
-// ======================================================
-
-const btnModoCasual = document.getElementById("btnModoCasual");
-
-if (btnModoCasual) {
-
-    btnModoCasual.addEventListener("click", function () {
-
-        window.location.href = "/JS/juego-casual.html";
-
-    });
-
-}
 
 // ======================================================
 // 3. COMPROBAR SI HAY UN USUARIO CONECTADO
@@ -49,38 +54,53 @@ async function verificarSesion() {
 
     try {
 
-        const respuesta = await fetch(URL_SESION, {
-
-            credentials: "same-origin",
-
-            cache: "no-store"
-
-        });
+        const respuesta = await fetch(
+            URL_SESION,
+            {
+                credentials: "same-origin",
+                cache: "no-store"
+            }
+        );
 
 
         if (!respuesta.ok) {
 
-            throw new Error("Error al consultar la sesión.");
-
+            throw new Error(
+                "Error al consultar la sesión."
+            );
         }
 
 
-        const resultado = await respuesta.json();
+        const resultado =
+            await respuesta.json();
 
 
-        // Capturamos los elementos HTML.
+        // ==================================================
+        // ELEMENTOS DEL HTML
+        // ==================================================
 
         const botonesAcceso =
-            document.getElementById("botonesAcceso");
+            document.getElementById(
+                "botonesAcceso"
+            );
+
 
         const panelUsuario =
-            document.getElementById("panelUsuario");
+            document.getElementById(
+                "panelUsuario"
+            );
+
 
         const nombreJugador =
-            document.getElementById("nombreJugador");
+            document.getElementById(
+                "nombreJugador"
+            );
+
 
         const botonComenzar =
-            document.getElementById("botonComenzar");
+            document.getElementById(
+                "botonComenzar"
+            );
 
 
         // ==================================================
@@ -89,52 +109,70 @@ async function verificarSesion() {
 
         if (resultado.logueado === true) {
 
-            // Ocultamos los botones de login y registro.
+
+            // Ocultamos login y registro.
 
             if (botonesAcceso) {
 
-                botonesAcceso.classList.add("hidden");
-
+                botonesAcceso.classList.add(
+                    "hidden"
+                );
             }
 
 
-            // Mostramos el panel del usuario.
+            // Mostramos panel del usuario.
 
             if (panelUsuario) {
 
-                panelUsuario.classList.remove("hidden");
+                panelUsuario.classList.remove(
+                    "hidden"
+                );
 
-                panelUsuario.classList.add("flex");
-
+                panelUsuario.classList.add(
+                    "flex"
+                );
             }
 
 
-            // Mostramos el nombre.
+            // Mostramos nombre del usuario.
 
-            if (nombreJugador) {
+            if (
+                nombreJugador &&
+                resultado.usuario
+            ) {
 
                 nombreJugador.textContent =
-                    "¡Hola, " + resultado.usuario.nombre + "!";
-
+                    "¡Hola, " +
+                    resultado.usuario.nombre +
+                    "!";
             }
 
 
-            // El juego todavía está pendiente de implementar.
+            // ==================================================
+            // BOTÓN PRINCIPAL
+            // ==================================================
 
             if (botonComenzar) {
 
-                botonComenzar.textContent = "🎮 Próximamente";
+                botonComenzar.textContent =
+                    "🎮 Jugar Modo Casual";
 
-                botonComenzar.removeAttribute("href");
 
-                botonComenzar.classList.add(
+                    botonComenzar.setAttribute(
+                        "href",
+                        "/tuttifrutti/HTML/juego-casual.html"
+                    );
+
+
+                botonComenzar.classList.remove(
                     "cursor-not-allowed",
                     "opacity-70"
                 );
-
             }
 
+
         } else {
+
 
             // ==================================================
             // USUARIO SIN SESIÓN ACTIVA
@@ -142,17 +180,43 @@ async function verificarSesion() {
 
             if (botonesAcceso) {
 
-                botonesAcceso.classList.remove("hidden");
-
+                botonesAcceso.classList.remove(
+                    "hidden"
+                );
             }
 
 
             if (panelUsuario) {
 
-                panelUsuario.classList.add("hidden");
+                panelUsuario.classList.add(
+                    "hidden"
+                );
 
-                panelUsuario.classList.remove("flex");
+                panelUsuario.classList.remove(
+                    "flex"
+                );
+            }
 
+
+            // Si no está conectado,
+            // lo enviamos al registro.
+
+            if (botonComenzar) {
+
+                botonComenzar.textContent =
+                    "🚀 Comenzar a jugar";
+
+
+                botonComenzar.setAttribute(
+                    "href",
+                    "../HTML/registro.html"
+                );
+
+
+                botonComenzar.classList.remove(
+                    "cursor-not-allowed",
+                    "opacity-70"
+                );
             }
 
         }

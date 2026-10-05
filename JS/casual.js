@@ -24,7 +24,7 @@ const formJuego = document.getElementById("formJuego");
 
 
 // ======================================================
-// 2. CAPTURAMOS LOS CAMPOS DEL JUEGO
+// 2. CAMPOS DEL JUEGO
 // ======================================================
 
 const campos = [
@@ -38,7 +38,7 @@ const campos = [
 
 
 // ======================================================
-// 3. VARIABLES GENERALES DEL JUEGO
+// 3. VARIABLES GENERALES
 // ======================================================
 
 let letraSeleccionada = "";
@@ -52,9 +52,8 @@ let intervaloTiempo = null;
 let juegoActivo = false;
 
 
-// Guardamos el ID de la partida actual.
-// Al comenzar será null.
-// PHP creará la partida en la primera ronda.
+// ID de la partida actual.
+// Al principio todavía no existe.
 let idPartida = null;
 
 
@@ -86,7 +85,7 @@ const letras = [
 
 
 // ======================================================
-// 5. GENERAR UNA LETRA ALEATORIA
+// 5. GENERAR LETRA ALEATORIA
 // ======================================================
 
 function generarLetra() {
@@ -102,7 +101,7 @@ function generarLetra() {
 
 
 // ======================================================
-// 6. ACTIVAR LOS CAMPOS
+// 6. ACTIVAR CAMPOS
 // ======================================================
 
 function activarCampos() {
@@ -127,7 +126,7 @@ function activarCampos() {
 
 
 // ======================================================
-// 7. DESACTIVAR LOS CAMPOS
+// 7. DESACTIVAR CAMPOS
 // ======================================================
 
 function desactivarCampos() {
@@ -135,12 +134,13 @@ function desactivarCampos() {
     campos.forEach(function (campo) {
 
         campo.disabled = true;
+
     });
 }
 
 
 // ======================================================
-// 8. ACTUALIZAR EL TEMPORIZADOR
+// 8. ACTUALIZAR TEMPORIZADOR
 // ======================================================
 
 function actualizarTemporizador() {
@@ -155,7 +155,8 @@ function actualizarTemporizador() {
     segundos = String(segundos).padStart(2, "0");
 
 
-    temporizador.textContent = `${minutos}:${segundos}`;
+    temporizador.textContent =
+        `${minutos}:${segundos}`;
 }
 
 
@@ -177,11 +178,10 @@ function iniciarTemporizador() {
         actualizarTemporizador();
 
 
-        // Si el tiempo llega a cero,
-        // termina automáticamente la ronda.
         if (tiempoRestante <= 0) {
 
             terminarRonda();
+
         }
 
     }, 1000);
@@ -201,7 +201,7 @@ function detenerTemporizador() {
 
 
 // ======================================================
-// 11. INICIAR UNA NUEVA RONDA
+// 11. INICIAR RONDA
 // ======================================================
 
 function iniciarRonda() {
@@ -216,36 +216,35 @@ function iniciarRonda() {
     juegoActivo = true;
 
 
-    // Generamos una nueva letra.
+    // Generamos la letra.
     generarLetra();
 
 
-    // Mostramos el número de ronda.
+    // Mostramos número de ronda.
     numeroRonda.textContent = rondaActual;
 
 
-    // Activamos los campos.
+    // Activamos campos.
     activarCampos();
 
 
-    // Activamos el botón terminar.
+    // Activamos botón terminar.
     btnTerminar.disabled = false;
 
 
-    // Desactivamos temporalmente el botón iniciar.
+    // Bloqueamos botón iniciar.
     btnIniciar.disabled = true;
 
 
-    // Ocultamos el resultado anterior.
+    // Ocultamos resultado anterior.
     resultadoRonda.classList.add("hidden");
 
 
-    // Mostramos mensaje.
     mensajeEstado.textContent =
         `Ronda iniciada. Escribí palabras con la letra ${letraSeleccionada}.`;
 
 
-    // Iniciamos el reloj.
+    // Iniciamos reloj.
     iniciarTemporizador();
 }
 
@@ -273,14 +272,12 @@ function validarRespuesta(respuesta) {
     const texto = normalizarTexto(respuesta);
 
 
-    // Campo vacío.
     if (texto === "") {
 
         return false;
     }
 
 
-    // Comprobamos que empiece con la letra seleccionada.
     return texto.charAt(0) === letraSeleccionada;
 }
 
@@ -301,10 +298,9 @@ function calcularPuntaje() {
 
         if (validarRespuesta(respuesta)) {
 
-            // Primera versión:
-            // cada respuesta correcta vale 10 puntos.
-
+            // Cada respuesta correcta vale 10 puntos.
             puntos += 10;
+
         }
 
     });
@@ -315,7 +311,7 @@ function calcularPuntaje() {
 
 
 // ======================================================
-// 15. MARCAR RESPUESTAS
+// 15. MOSTRAR VALIDACIÓN VISUAL
 // ======================================================
 
 function mostrarValidacionCampos() {
@@ -326,7 +322,6 @@ function mostrarValidacionCampos() {
             validarRespuesta(campo.value);
 
 
-        // Eliminamos marcas anteriores.
         campo.classList.remove(
             "ring-4",
             "ring-green-400",
@@ -336,7 +331,6 @@ function mostrarValidacionCampos() {
 
         if (respuestaCorrecta) {
 
-            // Respuesta correcta.
             campo.classList.add(
                 "ring-4",
                 "ring-green-400"
@@ -344,11 +338,11 @@ function mostrarValidacionCampos() {
 
         } else {
 
-            // Respuesta incorrecta o vacía.
             campo.classList.add(
                 "ring-4",
                 "ring-red-400"
             );
+
         }
 
     });
@@ -361,19 +355,13 @@ function mostrarValidacionCampos() {
 
 async function guardarRonda(puntos) {
 
-    // Preparamos toda la información que enviaremos a PHP.
     const datosRonda = {
 
-        // La primera vez será null.
-        // PHP creará una nueva partida.
         id_partida: idPartida,
 
 
-        // ==================================================
-        // TEMPORAL PARA LA PRUEBA
-        // ==================================================
-        // Después lo reemplazaremos por el usuario
-        // que inició sesión.
+        // TEMPORAL
+        // Después lo tomaremos desde la sesión.
         id_usuario: 1,
 
 
@@ -384,7 +372,6 @@ async function guardarRonda(puntos) {
         puntaje: puntos,
 
 
-        // Respuestas ingresadas por el jugador.
         respuestas: {
 
             Nombre:
@@ -414,23 +401,19 @@ async function guardarRonda(puntos) {
             "Guardando ronda...";
 
 
-        const respuesta = await fetch(
-            "php/guardar_ronda.php",
-            {
-                method: "POST",
+            const respuesta = await fetch(
+                "/tuttifrutti/PHP/guardar_ronda.php",
+                {
+                    method: "POST",
+            
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+            
+                    body: JSON.stringify(datosRonda)
+                }
+            );
 
-                headers: {
-                    "Content-Type": "application/json"
-                },
-
-                body: JSON.stringify(datosRonda)
-            }
-        );
-
-
-        // ==================================================
-        // VERIFICAMOS RESPUESTA HTTP
-        // ==================================================
 
         if (!respuesta.ok) {
 
@@ -440,8 +423,8 @@ async function guardarRonda(puntos) {
         }
 
 
-        // Convertimos la respuesta PHP en objeto JavaScript.
-        const resultado = await respuesta.json();
+        const resultado =
+            await respuesta.json();
 
 
         console.log(
@@ -450,14 +433,9 @@ async function guardarRonda(puntos) {
         );
 
 
-        // ==================================================
-        // SI PHP GUARDÓ CORRECTAMENTE
-        // ==================================================
-
         if (resultado.ok) {
 
             // Guardamos el ID de la partida.
-            // Las próximas rondas usarán esta misma partida.
             idPartida = resultado.id_partida;
 
 
@@ -479,8 +457,6 @@ async function guardarRonda(puntos) {
 
         } else {
 
-
-            // PHP respondió, pero informó un error.
             mensajeEstado.textContent =
                 "La ronda terminó, pero hubo un problema al guardarla.";
 
@@ -497,16 +473,13 @@ async function guardarRonda(puntos) {
                     "Detalle:",
                     resultado.error
                 );
+
             }
+
         }
 
 
     } catch (error) {
-
-
-        // ==================================================
-        // ERROR DE CONEXIÓN O RESPUESTA
-        // ==================================================
 
         console.error(
             "Error de comunicación con PHP:",
@@ -516,17 +489,18 @@ async function guardarRonda(puntos) {
 
         mensajeEstado.textContent =
             "No se pudo guardar la ronda en el servidor.";
+
     }
 }
 
 
 // ======================================================
-// 17. TERMINAR LA RONDA
+// 17. TERMINAR RONDA
 // ======================================================
 
 async function terminarRonda() {
 
-    // Evitamos finalizar dos veces.
+    // Evitamos terminar dos veces.
     if (!juegoActivo) {
 
         return;
@@ -536,11 +510,11 @@ async function terminarRonda() {
     juegoActivo = false;
 
 
-    // Detenemos el reloj.
+    // Detenemos reloj.
     detenerTemporizador();
 
 
-    // Desactivamos los campos.
+    // Bloqueamos campos.
     desactivarCampos();
 
 
@@ -548,11 +522,11 @@ async function terminarRonda() {
     btnTerminar.disabled = true;
 
 
-    // Validamos visualmente las respuestas.
+    // Mostramos colores de validación.
     mostrarValidacionCampos();
 
 
-    // Calculamos el puntaje.
+    // Calculamos puntaje.
     const puntos = calcularPuntaje();
 
 
@@ -560,33 +534,28 @@ async function terminarRonda() {
     puntajeRonda.textContent = puntos;
 
 
-    // Mostramos el cuadro de resultados.
+    // Mostramos panel de resultado.
     resultadoRonda.classList.remove("hidden");
 
 
-    // ==================================================
-    // GUARDAMOS EN MYSQL
-    // ==================================================
-
+    // Guardamos en MySQL.
     await guardarRonda(puntos);
 
 
-    // Cambiamos texto del botón.
+    // Preparamos siguiente ronda.
     btnIniciar.textContent =
         "▶ Siguiente ronda";
 
 
-    // Volvemos a habilitarlo.
     btnIniciar.disabled = false;
 
 
-    // Aumentamos la ronda.
     rondaActual++;
 }
 
 
 // ======================================================
-// 18. EVENTO BOTÓN INICIAR
+// 18. BOTÓN INICIAR
 // ======================================================
 
 btnIniciar.addEventListener(
@@ -594,12 +563,13 @@ btnIniciar.addEventListener(
     function () {
 
         iniciarRonda();
+
     }
 );
 
 
 // ======================================================
-// 19. EVENTO BOTÓN TUTTI FRUTTI
+// 19. BOTÓN TUTTI FRUTTI
 // ======================================================
 
 btnTerminar.addEventListener(
@@ -607,12 +577,13 @@ btnTerminar.addEventListener(
     function () {
 
         terminarRonda();
+
     }
 );
 
 
 // ======================================================
-// 20. EVITAR QUE ENTER ENVÍE EL FORMULARIO
+// 20. EVITAR ENVÍO DEL FORMULARIO
 // ======================================================
 
 formJuego.addEventListener(
@@ -620,6 +591,7 @@ formJuego.addEventListener(
     function (evento) {
 
         evento.preventDefault();
+
     }
 );
 
