@@ -1,3 +1,4 @@
+
 name: Publicar Tutti Frutti en InfinityFree
 
 on:
@@ -5,13 +6,14 @@ on:
 
 jobs:
   deploy:
+    name: Desplegar Tutti Frutti
     runs-on: ubuntu-latest
 
     steps:
       - name: Obtener archivos de GitHub
         uses: actions/checkout@v4
 
-      - name: Subir archivos a InfinityFree
+      - name: Probar conexion y despliegue FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -19,9 +21,14 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21
           protocol: ftp
+
           local-dir: ./
           server-dir: ${{ secrets.FTP_SERVER_DIR }}
+
+          dry-run: true
           dangerous-clean-slate: false
+          log-level: standard
+
           exclude: |
             **/.git*
             **/.git*/**
@@ -29,5 +36,10 @@ jobs:
             **/.vscode/**
             **/node_modules/**
             **/.env
+            **/.env.*
             **/conexion.php
             **/README.md
+            **/*.doc
+            **/*.docx
+            **/*.pdf
+            **/*.sql
