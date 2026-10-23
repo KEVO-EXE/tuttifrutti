@@ -25,7 +25,7 @@ jobs:
           local-dir: ./
           server-dir: ${{ secrets.FTP_SERVER_DIR }}
 
-          dry-run: true
+          dry-run: false
           dangerous-clean-slate: false
           log-level: standard
 
