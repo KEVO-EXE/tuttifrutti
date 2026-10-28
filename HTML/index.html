@@ -28,7 +28,7 @@
         muted
         loop
         playsinline
-        class="fixed inset-0 w-full h-full object-cover -z-20">
+        class="fixed inset-0 w-full h-full object-cover z-0">
 
         <!-- Ruta corregida -->
         <source src="../Video/fondo.mp4" type="video/mp4">
@@ -38,7 +38,7 @@
 
     <!-- CAPA OSCURA -->
 
-    <div class="fixed inset-0 bg-slate-950/70 -z-10"></div>
+    <div class="fixed inset-0 bg-slate-950/70 z-10 pointer-events-none"></div>
 
 
 
@@ -46,7 +46,7 @@
     <!-- BARRA DE NAVEGACIÓN -->
     <!-- ============================================== -->
 
-    <nav class="flex justify-between items-center
+    <nav class="relative z-20 flex justify-between items-center
                 px-6 md:px-16 py-6">
 
         <div class="text-2xl font-black text-purple-400">
@@ -108,7 +108,7 @@
     <!-- PRESENTACIÓN PRINCIPAL -->
     <!-- ============================================== -->
 
-    <main>
+    <main class="relative z-20">
 
         <section class="min-h-[70vh] flex flex-col
                         justify-center items-center
@@ -295,7 +295,7 @@
     <!-- PIE DE PÁGINA -->
     <!-- ============================================== -->
 
-    <footer class="text-center text-gray-500 py-10">
+    <footer class="relative z-20 text-center text-gray-500 py-10">
 
         Tutti Frutti • Aprende idiomas jugando 🍇
 

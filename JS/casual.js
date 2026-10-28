@@ -402,7 +402,7 @@ async function guardarRonda(puntos) {
 
 
             const respuesta = await fetch(
-                "/tuttifrutti/PHP/guardar_ronda.php",
+                "/PHP/guardar_ronda.php",
                 {
                     method: "POST",
             

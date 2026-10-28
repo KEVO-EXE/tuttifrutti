@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
             function () {
 
                 // Subimos desde JS/ y entramos a HTML/.
-                window.location.href = "/tuttifrutti/HTML/juego-casual.html";
+                window.location.href = "/HTML/juego-casual.html";
 
             }
         );
@@ -160,7 +160,7 @@ async function verificarSesion() {
 
                     botonComenzar.setAttribute(
                         "href",
-                        "/tuttifrutti/HTML/juego-casual.html"
+                        "/HTML/juego-casual.html"
                     );
 
 
