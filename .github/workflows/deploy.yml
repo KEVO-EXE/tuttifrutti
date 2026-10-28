@@ -2,6 +2,10 @@
 name: Publicar Tutti Frutti en InfinityFree
 
 on:
+  push:
+    branches:
+      - master
+
   workflow_dispatch:
 
 jobs:
