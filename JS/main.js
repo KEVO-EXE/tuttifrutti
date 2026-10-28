@@ -10,7 +10,7 @@
 // ======================================================
 
 // Ruta hacia PHP.
-const URL_SESION = "../PHP/verificar_sesion.php";
+const URL_SESION = "/PHP/verificar_sesion.php";
 
 
 // ======================================================
@@ -209,7 +209,7 @@ async function verificarSesion() {
 
                 botonComenzar.setAttribute(
                     "href",
-                    "../HTML/registro.html"
+                    "/HTML/registro.html"
                 );
 
 
