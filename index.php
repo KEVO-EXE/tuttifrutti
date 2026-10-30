@@ -6,7 +6,7 @@
 // ======================================================
 
 // Redirigimos hacia la carpeta HTML.
-header("Location: HTML/index.html");
+header("Location: /HTML/index.html");
 
 // Detenemos la ejecución de PHP.
 exit;

@@ -17,9 +17,9 @@
 
 const API = {
 
-    registro: "../PHP/registro.php",
+    registro: "/PHP/registro.php",
 
-    login: "../PHP/login.php"
+    login: "/PHP/login.php"
 
 };
 
@@ -256,7 +256,7 @@ async function registrarUsuario(evento) {
             setTimeout(function () {
 
                 window.location.href =
-                    resultado.redirect || "login.html";
+                    resultado.redirect || "/HTML/login.html";
 
             }, 1200);
 
@@ -372,7 +372,7 @@ async function iniciarSesion(evento) {
             setTimeout(function () {
 
                 window.location.href =
-                    resultado.redirect || "index.html";
+                    resultado.redirect || "/HTML/index.html";
 
             }, 800);
 
